@@ -1,6 +1,10 @@
 import { Button, Pressable, View, Text, StyleSheet } from "react-native";
 
-export default function Header({setDisplayMyQR}) {
+type HandleProp = {
+  setDisplayMyQR: Function
+}
+
+export default function Header({setDisplayMyQR}: HandleProp) {
   return (
     <View style={styles.topContainer}>
       <Text style={styles.firstTopRowContainer}>My Portfolio App</Text>
