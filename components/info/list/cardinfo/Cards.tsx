@@ -2,39 +2,27 @@ import { CardProp } from "./Card";
 
 export const cards: CardProp[] = [
   {
-    paragraph: "Salir a pasear",
+    paragraph: "Quedarme en casa",
   },
   {
-    paragraph: "Senderismo",
+    paragraph: "Jugar ajedrez",
   },
   {
-    paragraph: "Ir a la playita",
+    paragraph: "Jugar al billar",
   },
   {
-    paragraph: "Domingos de misa",
+    paragraph: "A veces jugar furbo",
   },
   {
-    paragraph: "La guitarrita",
+    paragraph: "Tardecita de play",
   },
   {
-    paragraph: "El monte con lluvia",
+    paragraph: "Salir a comer",
   },
   {
-    paragraph: "Viajar",
+    paragraph: "Dragon Ball",
   },
   {
-    paragraph: "Música variadita",
-  },
-  {
-    paragraph: "Anime",
-  },
-  {
-    paragraph: "Ducharme",
-  },
-  {
-    paragraph: "Videojuegos",
-  },
-  {
-    paragraph: "Ir de cenar romántica",
+    paragraph: "Ver pelis",
   },
 ];

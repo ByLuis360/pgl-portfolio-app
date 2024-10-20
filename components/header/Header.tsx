@@ -1,24 +1,59 @@
-import { Button, Pressable, View, Text, StyleSheet } from "react-native";
+import {
+  Button,
+  Pressable,
+  View,
+  Text,
+  StyleSheet,
+  Switch,
+} from "react-native";
+import { LIGHT_MODE } from "../color/Colors";
+import Fontisto from "@expo/vector-icons/Fontisto";
 
 type HandleProp = {
-  setDisplayMyQR: Function
-}
+  setDisplayMyQR: Function;
+  colorScheme: string;
+  toggleColorScheme: Function;
+  isYellow: string;
+  isOrange: string;
+  textColor: string;
+  sunOrMoon: React.JSX.Element;
+};
 
-export default function Header({setDisplayMyQR}: HandleProp) {
+export default function Header({
+  setDisplayMyQR,
+  colorScheme,
+  toggleColorScheme,
+  isYellow,
+  isOrange,
+  textColor,
+  sunOrMoon
+}: HandleProp) {
   return (
     <View style={styles.topContainer}>
-      <Text style={styles.firstTopRowContainer}>My Portfolio App</Text>
-      <View style={styles.secondTopRowContainer}>
+      <Text
+        style={[
+          styles.firstTopRowContainer,
+          { backgroundColor: isYellow, color: textColor },
+        ]}
+      >
+        My Portfolio App
+      </Text>
+      <View
+        style={[styles.secondTopRowContainer, { backgroundColor: isOrange }]}
+      >
         <Pressable
           style={styles.buttonRoute}
           onPress={() => setDisplayMyQR(true)}
         >
-          <Text
-            style={styles.shadowBoxing}
-          >
-            Mi info
-          </Text>
+          <Text style={styles.shadowBoxing}>Mi info</Text>
         </Pressable>
+        <View style={styles.darkOrLightMode}>
+          <Text style={styles.shadowBoxing}>{sunOrMoon}</Text>
+          <Switch
+            value={colorScheme == "dark"}
+            onChange={toggleColorScheme}
+          />
+        </View>
         <Button
           onPress={() => setDisplayMyQR(false)}
           title="Mi Repo"
@@ -32,20 +67,20 @@ export default function Header({setDisplayMyQR}: HandleProp) {
 
 const styles = StyleSheet.create({
   topContainer: {
-    height: "15%",
-    paddingTop: 50,
+    paddingBottom: 0,
     width: "100%",
   },
   firstTopRowContainer: {
-    backgroundColor: "gray",
+    backgroundColor: LIGHT_MODE.yellow,
     textAlign: "center",
     fontWeight: "bold",
     textAlignVertical: "center",
     fontSize: 30,
+    padding: 22,
   },
   secondTopRowContainer: {
     flexDirection: "row",
-    backgroundColor: "darkgray",
+    backgroundColor: LIGHT_MODE.orange,
     justifyContent: "center",
     alignItems: "center",
   },
@@ -53,7 +88,7 @@ const styles = StyleSheet.create({
     width: "50%",
   },
   shadowBoxing: {
-    color: "white",
+    color: LIGHT_MODE.white,
     fontWeight: "bold",
     textTransform: "uppercase",
     shadowColor: "#000",
@@ -64,5 +99,16 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.43,
     shadowRadius: 9.51,
     elevation: 15,
+  },
+  darkOrLightMode: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    color: LIGHT_MODE.white,
+    fontWeight: "bold",
+    textTransform: "uppercase",
+    shadowColor: "#000",
+    paddingBottom: 20,
   },
 });

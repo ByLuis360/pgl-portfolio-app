@@ -1,25 +1,31 @@
 import { View, StyleSheet } from "react-native";
 import InfoDescription from "../description/InfoDescription";
 import InfoList from "../list/InfoList";
+import { LIGHT_MODE } from "../../color/Colors";
 
-export default function InfoContainer() {
+type handleInfoContainer = {
+  backgroundApp: string
+  descriptionBox: string
+  textColor: string
+}
+
+export default function InfoContainer({backgroundApp, descriptionBox, textColor}: handleInfoContainer) {
   return (
-    <View style={styles.bodyStails}>
+    <View style={[styles.bodyStyles, {backgroundColor: backgroundApp}]}>
       <View>
-        <InfoDescription/>
-        <InfoList/>
+        <InfoDescription descriptionBox={descriptionBox}/>
+        <InfoList textColor={textColor}/>
       </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  bodyStails: {
+  bodyStyles: {
     width: "100%",
-    borderWidth: 2,
-    borderColor: "black",
     alignItems: "center",
     justifyContent: "space-between",
     height: "85%",
+    backgroundColor: LIGHT_MODE.background
   },
 });

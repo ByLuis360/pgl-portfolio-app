@@ -1,35 +1,28 @@
 import { ScrollView, View, Text, StyleSheet } from "react-native";
 import { cards } from "./cardinfo/Cards";
-import Card, { CardProp } from "./cardinfo/Card";
+import ListCard, { CardProp } from "./cardinfo/Card";
 
-export default function InfoList() {
+type handleInfoList = {
+  textColor: string;
+};
+
+export default function InfoList({ textColor }: handleInfoList) {
   return (
-    <View>
-      <Text style={styles.subTitle}>cosas que me gustan mucho:</Text>
+    <>
+      <Text style={[styles.subTitle, { color: textColor }]}>
+        cosas que me gustan mucho:
+      </Text>
       <ScrollView style={styles.thingsContainer}>
-        {cards.map((card: CardProp) => (
-          <Card paragraph={card.paragraph}/>
+        {cards.map((card: CardProp, id: number) => (
+          <ListCard key={id} paragraph={card.paragraph} />
         ))}
       </ScrollView>
-    </View>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
-  thingsThatILiked: {
-    borderColor: "black",
-    borderWidth: 1,
-    borderStyle: "dashed",
-    padding: 20,
-    color: "darkred",
-    textAlign: "center",
-    fontWeight: "bold",
-    fontStyle: "italic",
-    fontSize: 16,
-    backgroundColor: "silver",
-  },
   subTitle: {
-    color: "beriblak",
     fontWeight: "900",
     textTransform: "capitalize",
     fontSize: 20,
@@ -37,5 +30,11 @@ const styles = StyleSheet.create({
   },
   thingsContainer: {
     padding: 10,
+    paddingLeft: 0,
+    paddingRight: 0,
+    margin: 50,
+    marginLeft: 0,
+    marginRight: 0,
+    width: "auto",
   },
 });
